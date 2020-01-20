@@ -1,0 +1,44 @@
+﻿@model IEnumerable<UserAccounts.Models.UserListViewModel>
+
+@{
+    ViewBag.Title = "UserList";
+}
+@Scripts.Render("~/bundles/UserAccounts")
+
+<meta charset="utf-8">
+<div class="nav justify-content-end">
+    <div class="navbar-brand">
+        <button type="button" class="btn btn-success" onclick="Unlocking()">Unblock</button>
+        <button type="button" class="btn btn-warning" onclick="Locking()">Block</button>
+        <button type="button" class="btn btn-danger" onclick="Delete()">Delete</button>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            <input id="checkall" type="checkbox"/>
+        </th>
+        <th>
+            User name
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <input class="checkbox" type="checkbox" name="statuses" value="@item.Id">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+        </tr>
+    }
+
+</table>
